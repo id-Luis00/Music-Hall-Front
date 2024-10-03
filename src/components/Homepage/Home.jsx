@@ -11,17 +11,17 @@ const Home =()=> {
     const show = useSelector(state => state.modals.show)  
     const dispatch = useDispatch()
 
-    const handleClose = () => dispatch(showLoginAction());
-    const handleShow = () => dispatch(hideLoginAction());
+    const handleClose = () => dispatch(hideLoginAction());
+    const handleShow = () => dispatch(showLoginAction());
 
   return (
     
-      <Container className="bg-dark">
+      <Container>
 
         <NavbarHome />
 
         <Button size="sm" variant="secondary" onClick={handleShow}>
-        login / register
+        Accedi
         </Button>
 
         <Login show={show} handleClose={handleClose} />
