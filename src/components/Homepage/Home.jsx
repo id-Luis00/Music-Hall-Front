@@ -45,7 +45,7 @@ const Home = () => {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
-              <Button variant="outline-dark" >
+              <Button variant="outline-light"  >
                 Cerca
               </Button>
             </Form>
