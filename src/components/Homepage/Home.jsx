@@ -1,34 +1,68 @@
-import { Button, Container } from "react-bootstrap";
-import Login from "../Login/Login";
+import { Button, Col, Container, Form, FormControl, Row } from "react-bootstrap";
 import NavbarHome from "./NavbarHome";
-import { useDispatch, useSelector } from "react-redux";
-import { hideLoginAction, showLoginAction } from "../../redux/actions";
+import { useState } from "react";
 
 
 
-const Home =()=> {
-    
-    const show = useSelector(state => state.modals.show)  
-    const dispatch = useDispatch()
 
-    const handleClose = () => dispatch(hideLoginAction());
-    const handleShow = () => dispatch(showLoginAction());
+const Home = () => {
+
+  const [search, setSearch] = useState("");
+
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+
+    /* qui fa una fetch per cercare la sala
+    Endpoint da definire nel backend */
+  }
 
   return (
-    
-      <Container>
+    <>
 
-        <NavbarHome />
 
-        <Button size="sm" variant="secondary" onClick={handleShow}>
-        Accedi
-        </Button>
+      <NavbarHome />
 
-        <Login show={show} handleClose={handleClose} />
+
+      <Container fluid className="d-flex justify-content-center align-items-center hero-section" >
+
+        <Row className="text-center">
+          <Col xs={12} >
+            <h1 className="">Cerca subito la sala <br /> che fa per te!</h1>
+          </Col>
+
+          <Col xs={12} >
+            <p>Offriamo una lunga lista di sale prove e registrazione</p>
+          </Col>
+
+          <Col xs={12} >
+
+            <Form onSubmit={handleSubmit}>
+              <FormControl
+                className="w-25 mx-auto mb-2"
+                placeholder="Inserisci zona..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+              <Button variant="outline-dark" >
+                Cerca
+              </Button>
+            </Form>
+
+
+
+          </Col>
+        </Row>
+
 
       </Container>
-    
-    )
+
+    </>
+  )
 }
 
 export default Home;
+
+
+

@@ -1,11 +1,13 @@
 // VARIABILI
 
-export const LOGIN_MODAL_SHOW = "LOGIN_MODAL_SHOW" ;
-export const LOGIN_MODAL_HIDE = "LOGIN_MODAL_HIDE" ;
+export const LOGIN_MODAL_SHOW = "LOGIN_MODAL_SHOW";
+
+export const MODAL_HIDE = "MODAL_HIDE";
 
 // AZIONI
 
 export const showLoginAction = () => ({ type: LOGIN_MODAL_SHOW })
-export const hideLoginAction = () => ({ type: LOGIN_MODAL_HIDE })
+
+export const hideModalsAction = () => ({ type: MODAL_HIDE })
 
 // FETCH ACTIONS
