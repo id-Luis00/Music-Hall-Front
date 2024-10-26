@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Col, Row, Button, Form, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const GestioneSale = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [token, setToken] = useState("");
     const [selectedSala, setSelectedSala] = useState(null);
@@ -44,6 +46,7 @@ const GestioneSale = () => {
         });
     };
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setModificaSala(prevState => ({
@@ -51,6 +54,8 @@ const GestioneSale = () => {
             [name]: value
         }));
     };
+
+
 
     const putSala = async () => {
         const data = {
@@ -206,18 +211,25 @@ const GestioneSale = () => {
                         {user && user.listaSale && user.listaSale.length > 0 ? (
                             <>
                                 {user.listaSale.map((sala) => (
-                                    <Col key={sala.id} xs={12} className="p-3 btn btn-sale d-flex gap-5" onClick={() => handleSelectSala(sala)}>
+                                    <Col key={sala.id} xs={12} className="p-3  btn-sale d-flex gap-5"  >
                                         <Image className="d-block rounded-4 shadow" height={200} src={sala.imageURL} />
                                         <div className="d-flex flex-column align-items-start">
 
                                             <h3
                                                 className="text-light"
-
+                                                onClick={e => {
+                                                    e.preventDefault();
+                                                    navigate(`/details/${sala.id}`)
+                                                }}
                                                 style={{ cursor: "pointer" }}
                                             >
                                                 {sala.nomeSala}
                                             </h3>
                                             <p className="text-start text-light mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sed praesentium id quidem deserunt odit minus ab accusantium, at error eligendi. Enim quaerat totam ratione quibusdam rem veniam amet libero.</p>
+                                            <div className="d-flex gap-3 align-items-center">
+                                                <Button variant="outline-primary" onClick={() => handleSelectSala(sala)}>Modifica</Button>
+                                                <Button variant="outline-danger" onClick={() => alert("sei sicuro di voler eliminare la sala?")}>Elimina</Button>
+                                            </div>
                                         </div>
                                     </Col>
                                 ))}
@@ -229,7 +241,7 @@ const GestioneSale = () => {
                         )}
                     </>
                 )}
-            </Row>
+            </Row >
         </>
     );
 };

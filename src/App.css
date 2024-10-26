@@ -349,6 +349,7 @@ body {
 
 .btn-sale {
   &:hover {
+    cursor: default;
     background-color: hsl(0, 0%, 50%);
   }
 }
