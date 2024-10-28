@@ -53,7 +53,8 @@ const BackOfficeUserPage = () => {
             const resp = await fetch(`http://localhost:3001/utenti/${id}`, {
                 method: "PUT",
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(userModificato)
             })
