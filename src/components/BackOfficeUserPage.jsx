@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import DeleteSalaModal from "./DeleteModal";
 
 
 
@@ -27,6 +28,7 @@ const BackOfficeUserPage = () => {
     ];
 
     const [user, setUser] = useState(null);
+    const [token, setToken] = useState("");
     const [userModificato, setUserModificato] = useState({
         nome: '',
         cognome: '',
@@ -46,9 +48,20 @@ const BackOfficeUserPage = () => {
         }));
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (id) => {
         try {
-            const resp = await fetch("http://localhost")
+            const resp = await fetch(`http://localhost:3001/utenti/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(userModificato)
+            })
+
+            if (resp.ok) {
+                const dataResp = resp.json();
+                alert("Modifica effettuata!", dataResp)
+            }
         } catch (error) {
             console.error("Errore nella fetch:", error)
         }
@@ -57,7 +70,9 @@ const BackOfficeUserPage = () => {
 
     useEffect(() => {
         const userFound = JSON.parse(localStorage.getItem("user"));
+        const tokenFound = localStorage.getItem("token");
         if (userFound) {
+            setToken(tokenFound)
             setUser(userFound);
             setUserModificato(userFound)
             console.log("userFound", userFound);
@@ -72,7 +87,10 @@ const BackOfficeUserPage = () => {
             </Col>
 
             <Col xs={12}>
-                <Form onSubmit={handleSubmit} className="ps-3">
+                <Form onSubmit={(e) => {
+                    e.preventDefault()
+                    handleSubmit(user.id)
+                }} className="ps-3">
                     <Form.Group className="mb-3" controlId="nome">
                         <Form.Label >Nome</Form.Label>
                         <Form.Control
@@ -98,6 +116,18 @@ const BackOfficeUserPage = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="username">
+                        <Form.Label >Immagine profilo</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="avatar"
+                            placeholder="inserisci URL"
+                            value={userModificato.avatar}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="username">
                         <Form.Label >Username</Form.Label>
                         <Form.Control
                             type="text"
@@ -112,7 +142,7 @@ const BackOfficeUserPage = () => {
                     <Form.Group className="mb-3" controlId="email">
                         <Form.Label >Email</Form.Label>
                         <Form.Control
-                            type="text"
+                            type="email"
                             name="email"
                             placeholder="inserisci email"
                             value={userModificato.email}
@@ -121,16 +151,18 @@ const BackOfficeUserPage = () => {
                         />
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3" controlId="password">
-                        <Form.Label>Password</Form.Label>
+                    <Form.Group className="mb-3" controlId="email">
+                        <Form.Label >Password</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Password"
+                            name="password"
+                            placeholder="inserisci password"
                             value={userModificato.password}
                             onChange={handleChange}
                             required
                         />
-                    </Form.Group> */}
+                    </Form.Group>
+
 
                     <div className="d-flex justify-content-center gap-5">
                         <Form.Group className="w-100" controlId="birthDate">
@@ -140,6 +172,7 @@ const BackOfficeUserPage = () => {
                                 name="birthDate"
                                 value={userModificato.dataDiNascita}
                                 onChange={handleChange}
+                                required
                             />
                         </Form.Group>
 
@@ -150,7 +183,7 @@ const BackOfficeUserPage = () => {
                                 value={userModificato.tipoMusicista}
                                 onChange={handleChange}
                             >
-                                <option value="">Seleziona una tipologia</option>
+                                <option required value="">Seleziona una tipologia</option>
                                 {
                                     tipologieMusicista.map((tipologia, index) => (
                                         <option key={index} value={tipologia}>
@@ -163,10 +196,17 @@ const BackOfficeUserPage = () => {
                     </div>
 
 
+                    <div className="d-flex justify-content-end gap-3">
 
-                    <Button variant="outline-light" type="submit" className="mt-3 w-100">
-                        Registrati
-                    </Button>
+                        <Button variant="outline-primary" type="submit" className="mt-3  py-3 fs-3">
+                            Modifica
+                        </Button>
+                        <Button variant="outline-danger" type="submit" className="mt-3  py-3 fs-3">
+                            Elimina
+                        </Button>
+
+
+                    </div>
 
                 </Form >
             </Col>

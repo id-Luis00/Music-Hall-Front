@@ -1,6 +1,6 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import CardSala from './CardSala'
+
 import SearchForm from './SearchForm'
 import { useEffect } from "react";
 import { getSale } from "../redux/actions";

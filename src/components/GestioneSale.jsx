@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import { Col, Row, Button, Form, Image } from "react-bootstrap";
+import { Col, Row, Button, Form, Image, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import DeleteSalaModal from "./DeleteModal";
+import { useDispatch } from "react-redux";
+import { isLoggedInAction } from "../redux/actions";
 
 const GestioneSale = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [token, setToken] = useState("");
@@ -53,6 +59,27 @@ const GestioneSale = () => {
             ...prevState,
             [name]: value
         }));
+    };
+
+    const handleDelete = async (salaId) => {
+
+        try {
+            const resp = await fetch(`http://localhost:3001/sale/${salaId}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+            if (resp.ok) {
+                alert("Eliminazione andata a buon fine!")
+                const response = resp.json()
+                console.log("responso della fetch di eliminazione", response)
+                dispatch(isLoggedInAction(token))
+            }
+
+        } catch (error) {
+            console.error("errore nella fetch : ", error)
+        }
     };
 
 
@@ -228,7 +255,7 @@ const GestioneSale = () => {
                                             <p className="text-start text-light mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sed praesentium id quidem deserunt odit minus ab accusantium, at error eligendi. Enim quaerat totam ratione quibusdam rem veniam amet libero.</p>
                                             <div className="d-flex gap-3 align-items-center">
                                                 <Button variant="outline-primary" onClick={() => handleSelectSala(sala)}>Modifica</Button>
-                                                <Button variant="outline-danger" onClick={() => alert("sei sicuro di voler eliminare la sala?")}>Elimina</Button>
+                                                <DeleteSalaModal onDelete={handleDelete} salaId={sala.id} />
                                             </div>
                                         </div>
                                     </Col>
