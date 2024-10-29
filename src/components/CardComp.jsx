@@ -9,7 +9,7 @@ const CardComp = ({ nomeSala, imageURL, indirizzo, prezzo, regione, comune, id }
 
   return (
 
-    <div className="card ms-4 animate-card shadow-sm" style={{ cursor: "pointer" }} onClick={() => navigate(`/details/${id}`)}>
+    <div className="card ms-4 animate-card shadow-sm border-0" style={{ cursor: "pointer" }} onClick={() => navigate(`/details/${id}`)}>
       <Image src={imageURL} />
       <div className="position-absolute text-light fs-5 text-center top-0 top-cards w-100">
         <p className=" ">{nomeSala}</p>

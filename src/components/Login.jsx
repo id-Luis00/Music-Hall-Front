@@ -82,7 +82,7 @@ const Login = () => {
                         </Form.Group>
 
                         <Button variant="outline-light" type="submit" className="w-100">
-                            Submit
+                            Accedi
                         </Button>
 
                         <hr />

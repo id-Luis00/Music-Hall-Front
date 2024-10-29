@@ -13,10 +13,6 @@ const Register = () => {
     const [showOwner, setShowOwner] = useState(true)
     const navigate = useNavigate();
 
-    /* const handleClick = (e) => {
-        e.preventDefault();
-
-    } */
 
     const tipologieMusicista = [
         "CANTANTE",
@@ -139,18 +135,17 @@ const Register = () => {
             console.log(error)
         }
     }
-    {/* inserire la scelta multipla tra utente e sala */ }
+    {/* inserire la scelta multipla tra utente e proprietario */ }
     {/* l'idea sarebbe di creare un renderizzazione condizionale
     se clicco UTENTE, renderizzera il form per l'utente.
-    se clicco SALA, renderizzerà il form per aggiungere una sala. */}
+    se clicco PROPRIETARIO, renderizzerà il form per aggiungere una sala. */}
 
     return (
         <>
             <Row className=" px-4 justify-content-center align-items-center height-register g-0 gap-5 mb-auto h-100">
                 <Col xs={12} className="text-center">
                     <h1 className="">- Dicci di più -</h1>
-                    <p className="fs-5 mt-3"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti vitae laborum neque, error ratione molestiae quaerat.
-                        <br /> Officia cupiditate, odio odit nostrum nisi iste saepe optio beatae dignissimos reiciendis repellendus nesciunt?</p>
+                    <p className="fs-5 mt-3"> Benvenuto nella pagina di registrazione. <br /> Qui potrai scegliere se registrarti come utente o come proprietario di una o più sale </p>
                 </Col>
                 {showUser && (
                     <Col xs={12} lg={4} className="text-center box-sign " onClick={() => {
@@ -168,7 +163,7 @@ const Register = () => {
                                 <hr className="bg-dark" />
                                 <Col xs={12}>
                                     <h2> Account Utente</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis ex, quisquam fuga, molestiae consequuntur deleniti esse a sed odio sequi molestias hic maiores, consectetur consequatur blanditiis eius quod repellendus.
+                                    <p>Con un account utente avrai accesso alle funzionalità principali del sito. Inoltre potrai gestire il tuo account contenenti le sale preferite, e altre feature che presto arriveranno nel sito!
 
                                     </p>
                                 </Col>
@@ -194,7 +189,8 @@ const Register = () => {
                             <hr className="bg-dark" />
                             <Col xs={12}>
                                 <h2> Account Proprietario</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis ex, quisquam fuga, molestiae consequuntur deleniti esse a sed odio sequi molestias hic maiores, consectetur consequatur blanditiis eius quod repellendus.
+                                <p>
+                                    Sei il proprietario di una o più sale? che sia sala prove, registrazione o qualsiasi altro tipo, non aspettare oltre. Inizia a pubblicare le tue sale qui in Music-Hall! <br /> Presto sarà possibile gestire le prenotazioni direttamente da qui! Senza ricevere chiamate o leggere costantemente le mail ( che arriveranno comunque )
 
                                 </p>
                             </Col>
@@ -370,7 +366,7 @@ const Register = () => {
 
 
                             <Button variant="outline-light" type="submit" className="mt-3 w-100">
-                                Submit
+                                Registrati
                             </Button>
 
                         </Form >

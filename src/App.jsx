@@ -13,6 +13,7 @@ import NotFound from './components/NotFound';
 import HeroProfile from './components/HeroProfile';
 import GestioneSale from './components/GestioneSale';
 import BackOfficeUserPage from './components/BackOfficeUserPage';
+import AboutPage from './components/AboutPage';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='modifica' element={<BackOfficeUserPage />} />
           <Route path='preferiti' element={<h2 className='text-center'> Sale Preferite </h2>} />
         </Route>
+        <Route path='/about' element={<AboutPage />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

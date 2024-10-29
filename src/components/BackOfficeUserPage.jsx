@@ -81,13 +81,13 @@ const BackOfficeUserPage = () => {
     }, [])
 
     return (
-        <Row>
+        <Row className="justify-content-center">
             <Col xs={12} className="text-center">
                 <h1>Modifica account</h1>
                 <hr />
             </Col>
 
-            <Col xs={12}>
+            <Col xs={6} className="">
                 <Form onSubmit={(e) => {
                     e.preventDefault()
                     handleSubmit(user.id)

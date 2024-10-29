@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Col, Row, Button, Form, Image, Alert } from "react-bootstrap";
+import { Col, Row, Button, Form, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteSalaModal from "./DeleteModal";
 import { useDispatch } from "react-redux";
@@ -125,14 +124,14 @@ const GestioneSale = () => {
 
     return (
         <>
-            <Row>
+            <Row className="justify-content-center">
                 <Col xs={12}>
                     <h1 className="text-center">Le tue sale</h1>
                     <hr />
                 </Col>
 
                 {selectedSala ? (
-                    <Col xs={12} className="p-3 ">
+                    <Col xs={6} className="p-3 ">
                         <h3>Modifica la sala - <span className="text-decoration-underline"> {selectedSala.nomeSala} </span> </h3>
                         <Form onSubmit={handleSubmitModifica} className="d-flex flex-column gap-3">
                             <Form.Group controlId="nomeSala">
@@ -225,13 +224,17 @@ const GestioneSale = () => {
                                     onChange={handleChange}
                                 />
                             </Form.Group>
-                            <Button variant="outline-light" type="submit" className="mt-3 py-3 fs-3 w-75 mx-auto">
-                                Salva Modifiche
-                            </Button>
+                            <div className="d-flex gap-3">
+
+                                <Button variant="outline-primary" type="submit" className="mt-3 py-3 fs-3 d-block ">
+                                    Salva Modifiche
+                                </Button>
+                                <Button variant="outline-danger" className="mt-3 py-3 fs-3 d-block " onClick={() => setSelectedSala(null)}>
+                                    Annulla
+                                </Button>
+                            </div>
                         </Form>
-                        <Button variant="secondary" className="mt-3 py-3 fs-3 w-75 d-block mx-auto" onClick={() => setSelectedSala(null)}>
-                            Annulla
-                        </Button>
+
                     </Col>
                 ) : (
                     <>

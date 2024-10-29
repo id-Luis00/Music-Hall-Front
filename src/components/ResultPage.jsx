@@ -13,7 +13,6 @@ import CardComp from "./CardComp";
 
 const ResultPage = () => {
 
-    /* const [filteredSala, setFilteredSala] = useState([]); */
 
     const query = useSelector(state => state.search.search)
     const sale = useSelector(state => state.sale.saleData)
@@ -25,31 +24,31 @@ const ResultPage = () => {
     useEffect(() => {
         dispatch(getSale(params.query))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [params.query])
+    }, [dispatch, params.query])
 
     return (
         <Container fluid className="p-3  text-light position-relative">
             <Row className="pt-3 m-0   ">
-                <Col sm={12} md={3} xl={2} className="border border-start-0 border-bottom-0 rounded p-3  filter-sticky">
-                    <p className="h3 text-center">Filtri</p>
+                <Col sm={12} md={3} xl={2} className=" rounded p-3  ">
+                    <p className="h3 text-center">Ricerca</p>
                     <hr className="bg-light" />
-                    <p className="h5 text-center">Ordina per</p>
+                    {/* <p className="h5 text-center">Ordina per</p>
 
-                    <Button variant="outline-light" className="w-100 my-2 text-start" onClick={e => e.preventDefault()}>
+                    <Button variant="outline-light" className="w-100 my-2 text-start" >
                         Nome
                     </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" onClick={e => e.preventDefault()}>
+                    <Button variant="outline-light" className="w-100 my-2 text-start" >
                         Prezzo
                     </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" onClick={e => e.preventDefault()}>
+                    <Button variant="outline-light" className="w-100 my-2 text-start" >
                         Regione
                     </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" onClick={e => e.preventDefault()}>
+                    <Button variant="outline-light" className="w-100 my-2 text-start" >
                         Comune
                     </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" onClick={e => e.preventDefault()}>
+                    <Button variant="outline-light" className="w-100 my-2 text-start" >
                         Capienza
-                    </Button>
+                    </Button> */}
 
                     <SearchForm />
                 </Col>
