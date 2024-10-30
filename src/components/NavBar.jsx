@@ -25,21 +25,21 @@ const NavBar = () => {
             <Container fluid className='px-4'>
                 <Navbar.Brand className='bg-light rounded-2' >
                     <Link to={"/"}>
-                        <Image src={Logo} height={50} />
+                        <Image src={Logo} height={75} />
                     </Link>
 
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className=''>
                     <Nav className="">
-                        <NavLink to={"/"} className={({ isActive }) => isActive ? "active" : " non-active"} > Home </NavLink>
-                        <NavLink to={"/about"} className={({ isActive }) => isActive ? "active" : "non-active "}> About </NavLink>
+                        <NavLink to={"/"} className={({ isActive }) => isActive ? "active fs-4" : " non-active fs-4"} > Home </NavLink>
+                        <NavLink to={"/about/me"} className={({ isActive }) => isActive ? "active fs-4" : "non-active fs-4"}> About </NavLink>
 
                         {login ? (
-                            <NavLink to={`/profile/${userData.id}/me`} className={({ isActive }) => isActive ? "active" : " non-active "}> Account </NavLink>
+                            <NavLink to={`/profile/${userData.id}/me`} className={({ isActive }) => isActive ? "active fs-4" : " non-active fs-4"}> Account </NavLink>
 
                         ) : (
-                            <NavLink to={"/auth/login"} className={({ isActive }) => isActive ? "active" : " non-active "}> Login </NavLink>
+                            <NavLink to={"/auth/login"} className={({ isActive }) => isActive ? "active fs-4" : " non-active fs-4"}> Login </NavLink>
                         )}
                     </Nav>
 

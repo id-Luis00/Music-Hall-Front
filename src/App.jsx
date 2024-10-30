@@ -14,6 +14,8 @@ import HeroProfile from './components/HeroProfile';
 import GestioneSale from './components/GestioneSale';
 import BackOfficeUserPage from './components/BackOfficeUserPage';
 import AboutPage from './components/AboutPage';
+import AboutMe from './components/AboutMe';
+import AboutPageComponent from './components/AboutPageComponent'
 
 function App() {
 
@@ -35,7 +37,10 @@ function App() {
           <Route path='modifica' element={<BackOfficeUserPage />} />
           <Route path='preferiti' element={<h2 className='text-center'> Sale Preferite </h2>} />
         </Route>
-        <Route path='/about' element={<AboutPage />} />
+        <Route path='/about/*' element={<AboutPage />} >
+          <Route path='me' element={<AboutMe />} />
+          <Route path='site' element={<AboutPageComponent />} />
+        </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

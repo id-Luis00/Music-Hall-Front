@@ -11,7 +11,6 @@ import { FacebookIcon, FacebookMessengerIcon, FacebookMessengerShareButton, Face
 const DetailsSala = () => {
 
     // qui posso estrapolare l'id della sala e fare la fetch della singola sala
-
     // prendo innanzitutto l'url ed estrapolo l'id della sala
     const params = useParams()
     const [url, setUrl] = useState("");
@@ -101,11 +100,11 @@ const DetailsSala = () => {
                         </Row>
 
                         <Row className="text-light rounded-5">
-                            <Col xs={12} md={8} className="rounded-top-3 ">
+                            <Col xs={12} md={7} className="rounded-top-3 ">
                                 <div className="text-dark rounded-3 p-4">
                                     <div className="text-center">
                                         {sala.imageURL ? (
-                                            <Image height={600} className="rounded-5  image-rounded" src={sala.imageURL} />
+                                            <Image fluid height={600} className="rounded-5  image-rounded" src={sala.imageURL} />
                                         ) : (
                                             <Alert variant="danger" className="w-50 text-center mx-auto">
                                                 Nessuna immagine della sala
@@ -118,7 +117,7 @@ const DetailsSala = () => {
                                 </div>
                             </Col>
 
-                            <Col xs={12} md={4} className="px-3 py-2">
+                            <Col xs={12} md={5} className="px-3 py-2">
                                 <div className="p-2 bg-secondary text-light border-top border-start rounded-3">
                                     <Row>
                                         <Col xs={12}>

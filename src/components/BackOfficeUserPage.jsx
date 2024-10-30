@@ -119,11 +119,10 @@ const BackOfficeUserPage = () => {
                     <Form.Group className="mb-3" controlId="username">
                         <Form.Label >Immagine profilo</Form.Label>
                         <Form.Control
-                            type="text"
+                            type="file"
                             name="avatar"
                             placeholder="inserisci URL"
-                            value={userModificato.avatar}
-                            onChange={handleChange}
+
                             required
                         />
                     </Form.Group>
@@ -152,17 +151,7 @@ const BackOfficeUserPage = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="email">
-                        <Form.Label >Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            name="password"
-                            placeholder="inserisci password"
-                            value={userModificato.password}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Form.Group>
+
 
 
                     <div className="d-flex justify-content-center gap-5">

@@ -34,11 +34,8 @@ const Login = () => {
                 const data = await response.json();
                 dispatch(isLoggedInAction(data.token))
 
-                // salvo il token nel local storage
-                /*  localStorage.setItem("token", data.token) */
 
-                console.log(data)
-                alert("Login Effettuato!!! controlla i log :)")
+                console.log(data, "Login Effettuato!!! controlla i log :)")
                 navigate("/")
             } else throw new Error();
         } catch (error) {
@@ -81,13 +78,16 @@ const Login = () => {
                             />
                         </Form.Group>
 
-                        <Button variant="outline-light" type="submit" className="w-100">
+                        <Button variant="outline-light" type="submit" className="w-100 fs-4">
                             Accedi
                         </Button>
 
                         <hr />
                         <h4>Non sei ancora registrato? Registrati subito!</h4>
-                        <Link className="linkNavigator" to={"/auth/register"}>clicca qui!</Link >
+                        <Link className="linkNavigator btn text-primary fs-5 m-0 p-0" to={"/auth/register"}>clicca qui!</Link >
+                        <hr />
+                        <h4>Password dimenticata?</h4>
+                        <Link className="linkNavigator btn text-danger fs-5 m-0 p-0" to={"/auth/register"}>Recupera password</Link >
                     </Form >
                 </Col>
                 <Col xs={12} sm={10} md={12} lg={8} className="">

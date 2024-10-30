@@ -32,23 +32,6 @@ const ResultPage = () => {
                 <Col sm={12} md={3} xl={2} className=" rounded p-3  ">
                     <p className="h3 text-center">Ricerca</p>
                     <hr className="bg-light" />
-                    {/* <p className="h5 text-center">Ordina per</p>
-
-                    <Button variant="outline-light" className="w-100 my-2 text-start" >
-                        Nome
-                    </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" >
-                        Prezzo
-                    </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" >
-                        Regione
-                    </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" >
-                        Comune
-                    </Button>
-                    <Button variant="outline-light" className="w-100 my-2 text-start" >
-                        Capienza
-                    </Button> */}
 
                     <SearchForm />
                 </Col>

@@ -15,9 +15,9 @@ const ProfilePage = () => {
         }
     }, [])
 
-    // Aggiungi controllo per user
+
     if (!user) {
-        return <Spinner />;  // Oppure un'altra UI per indicare che sta caricando
+        return <Spinner />;
     }
 
     const property = user?.authorities?.[0]?.authority || '';
@@ -35,7 +35,11 @@ const ProfilePage = () => {
                     <Link to={"preferiti"} className="btn text-light profile-link mb-2 d-block">Sale preferite</Link>
                 )}
                 <Link to={"modifica"} className="btn text-light profile-link d-block mb-2">Modifica</Link>
-                <Link onClick={() => setShowCol(!showCol)} className="btn text-light profile-link d-block">Collegamenti</Link>
+                <Link onClick={() => setShowCol(!showCol)} className="btn text-light profile-link d-block mb-2">Collegamenti</Link>
+                <a href={"/"} onClick={() => {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user")
+                }} className="btn text-light profile-link d-block">Logout</a>
             </Col>
 
             <Col /* md={11} lg={6} */ className=" rounded-4 pe-3">

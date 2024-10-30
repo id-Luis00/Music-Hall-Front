@@ -9,6 +9,7 @@ import { isLoggedInAction } from "../redux/actions";
 const GestioneSale = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
+    const [addSala, setAddSala] = useState(false)
     const [user, setUser] = useState(null);
     const [token, setToken] = useState("");
     const [selectedSala, setSelectedSala] = useState(null);
@@ -126,9 +127,114 @@ const GestioneSale = () => {
         <>
             <Row className="justify-content-center">
                 <Col xs={12}>
-                    <h1 className="text-center">Le tue sale</h1>
+                    <div className="d-flex">
+
+                        <h1 className="text-center ms-auto">Le tue sale</h1>
+                        <Button variant="outline-light" className="ms-auto" onClick={() => {
+                            setAddSala(!addSala);
+                            setSelectedSala(null)
+                        }}>Aggiungi Sala</Button>
+                    </div>
                     <hr />
                 </Col>
+
+                {addSala && (
+                    <Col xs={6} className="p-3 ">
+                        <h3>Aggiungi nuova sala  </h3>
+                        <Form onSubmit={handleSubmitModifica} className="d-flex flex-column gap-3">
+                            <Form.Group controlId="nomeSala">
+                                <Form.Label>Nome Sala</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="nomeSala"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="regione">
+                                <Form.Label>Regione</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="regione"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="comune">
+                                <Form.Label>Comune</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="comune"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="indirizzo">
+                                <Form.Label>Indirizzo</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="indirizzo"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="cap">
+                                <Form.Label>CAP</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="cap"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="capienza">
+                                <Form.Label>Capienza</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="capienza"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="prezzoOrario">
+                                <Form.Label>Prezzo orario</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="prezzoOrario"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="immagineSala">
+                                <Form.Label>Immagine della sala</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="imageURL"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="telefono">
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="telefono"
+
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="website">
+                                <Form.Label>Website</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="website"
+
+                                />
+                            </Form.Group>
+                            <div className="d-flex gap-3">
+
+                                <Button variant="outline-primary" type="submit" className="mt-3 py-3 fs-3 d-block ">
+                                    Aggiungi
+                                </Button>
+                                <Button variant="outline-danger" className="mt-3 py-3 fs-3 d-block " onClick={() => setAddSala(!addSala)}>
+                                    Annulla
+                                </Button>
+                            </div>
+                        </Form>
+
+                    </Col>
+                )}
 
                 {selectedSala ? (
                     <Col xs={6} className="p-3 ">
@@ -255,7 +361,7 @@ const GestioneSale = () => {
                                             >
                                                 {sala.nomeSala}
                                             </h3>
-                                            <p className="text-start text-light mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sed praesentium id quidem deserunt odit minus ab accusantium, at error eligendi. Enim quaerat totam ratione quibusdam rem veniam amet libero.</p>
+                                            <p className="text-start text-light mt-3">Ancora non c'è una descrizione per questa sala!</p>
                                             <div className="d-flex gap-3 align-items-center">
                                                 <Button variant="outline-primary" onClick={() => handleSelectSala(sala)}>Modifica</Button>
                                                 <DeleteSalaModal onDelete={handleDelete} salaId={sala.id} />
