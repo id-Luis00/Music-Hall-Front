@@ -1,8 +1,10 @@
-# React + Vite
+# Music-Hall Front-End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Questa repository è dedicata alla parte front-end del mio progetto finale per EPICODE
 
-Currently, two official plugins are available:
+Si tratta di una piattaforma dedicata ai musicisti, come me, che si ritrovano a stare ore nella ricerca disperata di una sala prove.
+Dando la possibilità di cercare, tramite barra di ricerca, tutte le sale prove di una determinata zona.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vi rimando alla parte Back-end del progetto -->  [[https://github.com/id-Luis00/Music-Hall-Back]]
+
+
